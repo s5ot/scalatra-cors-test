@@ -1,0 +1,34 @@
+- attributes("title") = "REST API Test Client"
+
+.container
+  .row
+    .span4
+      form.well
+        fieldset
+          legend コメント投稿
+          .control-group
+            .controls
+              input#nameInput.input-block-level(type="text" placeholder="名前" 
+                data-bind="value: name, valueUpdate: 'afterkeydown'")
+              span#nameInputHelp.help-inline
+          .control-group
+            .controls
+              input#commentInput.input-block-level(type="text" placeholder="コメント" 
+                data-bind="value: comment, valueUpdate: 'afterkeydown'")
+              span#commentInputHelp.help-inline
+          button.btn.btn-primary(type="button" 
+            data-bind="enable: sendButtonEnable, event: { click: sendButtonClickHandler }") 送信
+    .span8
+      .input-append
+        input#searchInput(type="text" placeholder="名前で検索" data-bind="value: searchName")
+        a.btn.add-on(data-bind="event: { click: searchButtonClickHandler }")
+          i.icon-search
+      table#dataTable.table.table-striped.table-bordered
+        thead
+          tr
+            th 名前
+            th コメント
+        tbody(data-bind="foreach: posts")
+          tr
+            td(data-bind="text: name")
+            td(data-bind="text: comment")
